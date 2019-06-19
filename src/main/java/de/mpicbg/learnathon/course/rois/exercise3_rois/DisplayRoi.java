@@ -39,14 +39,17 @@ public class DisplayRoi
 
 		// Beginning of the exercise
 		// 1. Create new DefaultROITree.
-		ROITree roiTree = null;
+		ROITree roiTree = new DefaultROITree();
 		// 2. Add rois to the newly created ROITree.
+		roiTree.addROIs( rois );
 		// 3. Convert the ROITree to Overlay using the ConvertService
-		Overlay overlay = null;
+		Overlay overlay = convertService.convert( roiTree, Overlay.class );
 		// 4. Convert and the image to ImagePlus
-		ImagePlus imagePlus = null;
+		ImagePlus imagePlus = ImageJFunctions.wrap( (Img) image, "bridge" );
 		// 5. Use setOverlay on the ImagePlus
+		imagePlus.setOverlay( overlay );
 		// 6. Show the ImagePlus
+		imagePlus.show();
 		// End of the exercise
 	}
 }
