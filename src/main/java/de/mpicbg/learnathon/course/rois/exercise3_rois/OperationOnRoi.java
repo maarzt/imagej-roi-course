@@ -35,11 +35,13 @@ public class OperationOnRoi implements Command
 	{
 		// Begin of the Exercise
 		// 1. With ImageJFunctions convert ImagePlus to Img
-		Img< ? extends NumericType<?> > img = null;
+		Img< ? extends NumericType<?> > img = ImageJFunctions.wrap( image );
 		// 2. Get the roi from the ImagePlus
+		Roi roi = image.getRoi();
 		// 3. Use convertService to convert the Roi into a imglib2 RealMask
+		RealMask roiMask = convertService.convert( roi, RealMask.class );
 		// 4. Use method toIterableRegion to convert roiMask to an IterableRegion
-		IterableRegion< ? > iterableROI = null;
+		IterableRegion< BoolType > iterableROI = toIterableRegion( roiMask, img );
 		// End of the Exercise
 
 		// Make an iterable image over only the samples contained in the ROI.
