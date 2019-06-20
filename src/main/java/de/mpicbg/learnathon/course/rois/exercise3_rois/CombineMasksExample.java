@@ -6,6 +6,7 @@ import bdv.util.BdvOptions;
 import bdv.util.BdvStackSource;
 import io.scif.SCIFIO;
 import net.imagej.Dataset;
+import net.imagej.ImageJ;
 import net.imglib2.Interval;
 import net.imglib2.RealRandomAccessible;
 import net.imglib2.roi.Masks;
@@ -42,7 +43,7 @@ public class CombineMasksExample {
 	private static BdvHandle showBrideImageWithBdv() throws IOException {
 		// Load image of a human head. Image size is 255x255x128 pixels.
 		String path = DisplayRoi.class.getResource( "/bridge.tif" ).getFile();
-		Dataset image = new SCIFIO().datasetIO().open( path );
+		Dataset image = new ImageJ().scifio().datasetIO().open( path );
 
 		// Show image in bdv
 		BdvStackSource< ? > headSource = BdvFunctions
