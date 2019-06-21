@@ -1,5 +1,6 @@
 package de.mpicbg.learnathon.course.rois.exercise5;
 
+import de.mpicbg.learnathon.course.rois.utils.ExerciseUtils;
 import ij.ImagePlus;
 import ij.gui.Roi;
 import net.imagej.ImageJ;
@@ -16,6 +17,7 @@ import net.imglib2.type.logic.BoolType;
 import net.imglib2.type.numeric.NumericType;
 import net.imglib2.view.IntervalView;
 import net.imglib2.view.Views;
+import org.scijava.ItemIO;
 import org.scijava.command.Command;
 import org.scijava.convert.ConvertService;
 import org.scijava.plugin.Parameter;
@@ -27,10 +29,10 @@ import org.scijava.plugin.Plugin;
  *   1. Uses a region of interest as input.
  *   2. Performs it's image processing with ImgLib2.
  */
-@Plugin( type = Command.class, menuPath = "Test > Invert")
+@Plugin( type = Command.class, menuPath = "Test > Imprint Region Of Interest")
 public class RoiCommandExample implements Command
 {
-	@Parameter
+	@Parameter(type = ItemIO.BOTH)
 	private ImagePlus image;
 
 	@Parameter
@@ -50,11 +52,13 @@ public class RoiCommandExample implements Command
 		IterableRegion< BoolType > iterableROI = null;
 		// END OF THE EXERCISE
 
-		// Make an iterable image over only the samples contained in the ROI.
+		// Make an iterable image over only the pixels contained in the ROI.
 		final IterableInterval< ? extends NumericType<?> > iterableImageOnROI = Regions.sample( iterableROI, img );
 		// Do something to each pixel within the ROI.
 		iterableImageOnROI.forEach(t -> t.mul( 0.5 ) );
 
+		// Signal to the GUI that the image has changed.
+		image.updateAndDraw();
 	}
 
 	private IterableRegion< BoolType > toIterableRegion( RealMask mask, Interval image )
@@ -68,6 +72,8 @@ public class RoiCommandExample implements Command
 	}
 
 	public static void main(String... args) {
-		new ImageJ().ui().showUI();
+		ImageJ imageJ = new ImageJ();
+		imageJ.ui().showUI();
+		imageJ.ui().show(ExerciseUtils.openBridgeImage());
 	}
 }

@@ -11,8 +11,8 @@ public class ExerciseUtils {
 
 	public static Img<? extends RealType<?> > openBridgeImage() {
 		try {
-			String path = DisplayWithIJ1Example.class.getResource( "/bridge.tif" ).getFile();
-			return new ImageJ().scifio().datasetIO().open(path);
+			String path = ExerciseUtils.class.getResource( "/bridge.tif" ).getFile();
+			return new ImageJ().scifio().datasetIO().open(path).getImgPlus().getImg();
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e);
