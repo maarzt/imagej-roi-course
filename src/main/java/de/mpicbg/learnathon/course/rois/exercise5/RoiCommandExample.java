@@ -43,13 +43,13 @@ public class RoiCommandExample implements Command
 	{
 		// BEGIN OF THE EXERCISE
 		// 1. With ImageJFunctions convert ImagePlus to Img
-		Img< ? extends NumericType<?> > img = null;
+		Img< ? extends NumericType<?> > img = ImageJFunctions.wrap(image);
 		// 2. Get the roi from the ImagePlus
-		Roi roi = null;
+		Roi roi = image.getRoi();
 		// 3. Use convertService to convert the Roi into a imglib2 RealMask
-		RealMask roiMask = null;
+		RealMask roiMask = convertService.convert(roi, RealMask.class);
 		// 4. Use method toIterableRegion to convert roiMask to an IterableRegion
-		IterableRegion< BoolType > iterableROI = null;
+		IterableRegion< BoolType > iterableROI = toIterableRegion(roiMask, img);
 		// END OF THE EXERCISE
 
 		// Make an iterable image over only the pixels contained in the ROI.
