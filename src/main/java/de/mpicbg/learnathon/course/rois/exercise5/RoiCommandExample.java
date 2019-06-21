@@ -24,7 +24,7 @@ import org.scijava.plugin.Plugin;
 /**
  * Exercise Goals:
  *   You learn, how to write a ImageJ command, that:
- *   1. Uses an Roi as input.
+ *   1. Uses a region of interest as input.
  *   2. Performs it's image processing with ImgLib2.
  */
 @Plugin( type = Command.class, menuPath = "Test > Invert")
@@ -41,13 +41,13 @@ public class RoiCommandExample implements Command
 	{
 		// BEGIN OF THE EXERCISE
 		// 1. With ImageJFunctions convert ImagePlus to Img
-		Img< ? extends NumericType<?> > img = ImageJFunctions.wrap( image );
+		Img< ? extends NumericType<?> > img = null;
 		// 2. Get the roi from the ImagePlus
-		Roi roi = image.getRoi();
+		Roi roi = null;
 		// 3. Use convertService to convert the Roi into a imglib2 RealMask
-		RealMask roiMask = convertService.convert( roi, RealMask.class );
+		RealMask roiMask = null;
 		// 4. Use method toIterableRegion to convert roiMask to an IterableRegion
-		IterableRegion< BoolType > iterableROI = toIterableRegion( roiMask, img );
+		IterableRegion< BoolType > iterableROI = null;
 		// END OF THE EXERCISE
 
 		// Make an iterable image over only the samples contained in the ROI.

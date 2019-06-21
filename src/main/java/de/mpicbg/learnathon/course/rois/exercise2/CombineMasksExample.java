@@ -41,9 +41,9 @@ public class CombineMasksExample {
 
 		// BEGIN OF THE EXERCISE
 		// 1. Build a mask the contains all pixel of the ellipse and rectangle, but leaves out the triangle.
-		RealMask mask = ellipse.or(rectangle).minus(triangle);
-		// 2. Show the mask you created in step 1
-		showImageAndMask(image, mask);
+		RealMask mask = null;
+		// 2. Use the method showImageAndMask, to show the mask you create in step 1.
+
 		// END OF THE EXERCISE
 
 		// Extra exercise: show all the rois ellipse, rectangle, triangle and mask from the exercise above in on Big Data Viewer window

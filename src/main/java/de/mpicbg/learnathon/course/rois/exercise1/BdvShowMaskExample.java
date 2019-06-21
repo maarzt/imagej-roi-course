@@ -39,20 +39,20 @@ public class BdvShowMaskExample {
 		// 1. Use BdvFunctions.show to show the image.
 		//    Assign the returned BdvStackSource to a variable.
 		//    Make sure you provide BdvOptions.options().is2D() as an argument.
-		BdvStackSource< ? > source = BdvFunctions.show(image, "image", BdvOptions.options().is2D());
+		BdvStackSource< ? > source = null;
 		// 2. From the BdvStackSource get the BdvHandle
-		BdvHandle bdv = source.getBdvHandle();
+		BdvHandle bdv = null;
 
 		// Show mask
 		// 3. Use the method Masks.toRealRandomAccessible to convert the roi into a RealRandomAccessible
-		RealRandomAccessible< BoolType > randomAccessible = Masks.toRealRandomAccessible(roi);
+		RealRandomAccessible< BoolType > randomAccessible = null;
 		// 4. Use the method Intervals.smallestContainingInterval to get the interval from the roi
-		Interval interval = Intervals.smallestContainingInterval(roi);
+		Interval interval = null;
 		// 5. Use BdvFunctions.show to show the randomAccessible. Hint: You need to use the interval from above too.
-		BdvStackSource< BoolType > roiSource = BdvFunctions.show(randomAccessible, interval, "roi", BdvOptions.options().addTo(bdv));
+		BdvStackSource< BoolType > roiSource = null;
 		// 6. Set the color of the roiSource to red.
-		roiSource.setColor(new ARGBType(0xff00000));
-		// Extra: 7. In point 5 above, add BdvOption.options().addTo(bdv) as argument, to show the roi and the image in the same Big Data Viewer window.
+
+		// Extra: 7. In step 5 above, add BdvOption.options().addTo(bdv) as argument, to show the roi and the image in the same Big Data Viewer window.
 		// END OF THE EXERCISE
 	}
 

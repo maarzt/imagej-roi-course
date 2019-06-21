@@ -1,5 +1,6 @@
 package de.mpicbg.learnathon.course.rois.exercise4;
 
+import de.mpicbg.learnathon.course.rois.utils.ExerciseUtils;
 import ij.ImagePlus;
 import ij.gui.Overlay;
 import net.imagej.Dataset;
@@ -26,13 +27,12 @@ public class DisplayWithIJ1Example
 {
 	public static void main(String... args) throws IOException
 	{
-		// setup ImageJ and Services
+		// Setup ImageJ and services
 		ImageJ imageJ = new ImageJ();
 		ConvertService convertService = imageJ.convert();
 		UIService uiService = imageJ.ui();
 		// open image
-		String path = DisplayWithIJ1Example.class.getResource( "/bridge.tif" ).getFile();
-		Dataset image = imageJ.scifio().datasetIO().open( path );
+		Img<?> image = ExerciseUtils.openBridgeImage();
 
 		// create rois
 		List< MaskPredicate< ? > > rois = Arrays.asList(
@@ -44,17 +44,17 @@ public class DisplayWithIJ1Example
 
 		// BEGIN OF THE EXERCISE
 		// 1. Create new DefaultROITree.
-		ROITree roiTree = new DefaultROITree();
+		ROITree roiTree = null;
 		// 2. Add rois to the newly created ROITree.
-		roiTree.addROIs( rois );
+
 		// 3. Convert the ROITree to Overlay using the ConvertService
-		Overlay overlay = convertService.convert( roiTree, Overlay.class );
+		Overlay overlay = null;
 		// 4. Convert and the image to ImagePlus
-		ImagePlus imagePlus = ImageJFunctions.wrap( (Img) image, "bridge" );
+		ImagePlus imagePlus = null;
 		// 5. Use setOverlay on the ImagePlus
-		imagePlus.setOverlay( overlay );
-		// 6. Show the ImagePlus
-		imagePlus.show();
+
+		// 6. Use the uiService to show the ImagePlus
+
 		// END OF THE EXERCISE
 	}
 }
