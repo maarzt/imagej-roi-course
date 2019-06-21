@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="reveal-js/css/reset.css">
 		<link rel="stylesheet" href="reveal-js/css/reveal.css">
 		<link rel="stylesheet" href="reveal-js/css/theme/white.css">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="reveal-js/lib/css/monokai.css">
@@ -24,34 +25,106 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides" stype="width:1200px">
 				<section>
-					
+					<h1>Regions of Interest</h1>
+					ROIs in ImageJ2
 				</section>
-				<section>Slide 2</section>
+				<section data-markdown>
+					<script type="text/template">
+						## What is a ROI?
+
+						![](images/roi.png)
+
+						Note:
+
+						* Region of Image
+						* Particularly interesting by the user
+						* Operations like Filters
+						* Calculate values: mean, area or histograms
+					</script>
+				</section>
+				<section style="text-align:left;">
+					<h2>ImageJ1 ROIs</h2>
+					<div style="width:60%; float:left;">
+
+						<p>Pros:</p>
+						<ul>
+							<li>Interactive selection tools</li>
+							<li>ROI Manager</li>
+							<li>Visualization</li>
+						</ul>
+
+						<p>Cons:</p>
+						<ul>
+							<li>No 3D, 4D, 5D</li>
+							<li>Hardly ImgLib2 compatible</li>
+						</ul>
+
+						<p>Code:</p>
+						<pre><code class="hljava" data-trim>
+							imagePlus.getRoi();
+							imagePlus.setRoi(roi);
+							imagePlus.getOverlay();
+							imagePlus.setOverlay(overlay);
+							</code></pre>
+					</div>
+
+					<div style="width:40%; float:right;">
+						<img src="images/rois-tools.png">
+					</div>
+				</section>
 				<section data-markdown style="text-align:left;">
 					<script type="text/template">
-						## Markdown support
+						## ImgLib2: Mask, RealMask
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						![](images/predicate.png)
 
-						```java
-						package com.indago.io;
+						Pro:
+						* AND, OR, NOT, XOR, MINUS
+						* Convertible to ImageJ1 ROIs
 
-						import org.scijava.command.Command;
-						import org.scijava.plugin.Plugin;
+						Cons:
+						* No Interactive Tools
+						* No iteration
+					</script>
+				</section>
+				<section data-markdown style="text-align:left;">
+					<script type="text/template">
+						## ImgLib2: Iterable Regions
 
-						@Plugin(type = Command.class)
-						public class HelloWorld implements Command {
+						Pros:
+						* Integrated in ImgLib2
+						* Easy Iteration
+						* LabelRegions are IterableRegions
+						* Useful in algorithms
 
-							@Override
-							public void run() {
-								System.out.println("Hello World!");
+						Cons:
+						* No Interactive Tools
+						* No logical operations
+					</script>
+				</section>
+				<section data-markdown style="text-align:left;">
+					<script type="text/template">
+						## Conclusion
 
-							}
-						}
-						```
+						ImageJ2 + ROIs = complicated
+
+
+						* IJ1 ROIs: GUI Tools
+						* Mask, RealMask: Logical Operations
+						* Iteration: Algorithms
+
+
+						Conversion is required:
+						* IJ1 ROIs <=> RealMask, Mask <=> IterableRegions
+					</script>
+				</section>
+				<section data-markdown style="text-align:left;">
+					<script type="text/template">
+						## Exercises
+
+						Solutions are in the git branches
 					</script>
 				</section>
 			</div>
