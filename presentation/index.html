@@ -57,7 +57,7 @@
 
 						<p>Cons:</p>
 						<ul>
-							<li>No 3D, 4D, 5D</li>
+							<li>Only 2D</li>
 							<li>Hardly ImgLib2 compatible</li>
 						</ul>
 
@@ -82,27 +82,39 @@
 
 						Pro:
 						* AND, OR, NOT, XOR, MINUS
+						* Integrated in ImgLib2
 						* Convertible to ImageJ1 ROIs
+						* N-dimensional
 
 						Cons:
-						* No Interactive Tools
+						* No interactive tools
 						* No iteration
+						* Many classes and interfaces: MaskInterval, RealMaskRealInterval, ...
 					</script>
 				</section>
-				<section data-markdown style="text-align:left;">
-					<script type="text/template">
-						## ImgLib2: Iterable Regions
+				<section style="text-align:left;">
+					<h2>ImgLib2: IterableRegion</h2>
+					<div style="width:60%; float:left;">
 
-						Pros:
-						* Integrated in ImgLib2
-						* Easy Iteration
-						* LabelRegions are IterableRegions
-						* Useful in algorithms
+						<p>Pros:</p>
+						<ul>
+							<li>Easy Iteration</li>
+							<li>Integrated in ImgLib2</li>
+							<li>LabelRegions are IterableRegions</li>
+							<li>Useful in algorithms</li>
+							<li>N-dimensional</li>
+						</ul>
 
-						Cons:
-						* No Interactive Tools
-						* No logical operations
-					</script>
+						<p>Cons:</p>
+						<ul>
+							<li>No interactive UI tools</li>
+							<li>No logical operations</li>
+						</ul>
+					</div>
+
+					<div style="width:40%; float:right;">
+						<img src="images/iterable-region.svg" style="width:100%">
+					</div>
 				</section>
 				<section data-markdown style="text-align:left;">
 					<script type="text/template">
