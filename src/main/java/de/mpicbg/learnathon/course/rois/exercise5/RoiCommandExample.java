@@ -1,4 +1,4 @@
-package de.mpicbg.learnathon.course.rois.exercise3_rois;
+package de.mpicbg.learnathon.course.rois.exercise5;
 
 import ij.ImagePlus;
 import ij.gui.Roi;
@@ -21,8 +21,14 @@ import org.scijava.convert.ConvertService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
+/**
+ * Exercise Goals:
+ *   You learn, how to write a ImageJ command, that:
+ *   1. Uses an Roi as input.
+ *   2. Performs it's image processing with ImgLib2.
+ */
 @Plugin( type = Command.class, menuPath = "Test > Invert")
-public class OperationOnRoi implements Command
+public class RoiCommandExample implements Command
 {
 	@Parameter
 	private ImagePlus image;
@@ -33,7 +39,7 @@ public class OperationOnRoi implements Command
 	@Override
 	public void run()
 	{
-		// Begin of the Exercise
+		// BEGIN OF THE EXERCISE
 		// 1. With ImageJFunctions convert ImagePlus to Img
 		Img< ? extends NumericType<?> > img = ImageJFunctions.wrap( image );
 		// 2. Get the roi from the ImagePlus
@@ -42,11 +48,11 @@ public class OperationOnRoi implements Command
 		RealMask roiMask = convertService.convert( roi, RealMask.class );
 		// 4. Use method toIterableRegion to convert roiMask to an IterableRegion
 		IterableRegion< BoolType > iterableROI = toIterableRegion( roiMask, img );
-		// End of the Exercise
+		// END OF THE EXERCISE
 
 		// Make an iterable image over only the samples contained in the ROI.
 		final IterableInterval< ? extends NumericType<?> > iterableImageOnROI = Regions.sample( iterableROI, img );
-		// Do something to each sample within the ROI.
+		// Do something to each pixel within the ROI.
 		iterableImageOnROI.forEach(t -> t.mul( 0.5 ) );
 
 	}
