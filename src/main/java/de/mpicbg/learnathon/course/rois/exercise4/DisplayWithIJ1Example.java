@@ -44,16 +44,17 @@ public class DisplayWithIJ1Example
 
 		// BEGIN OF THE EXERCISE
 		// 1. Create new DefaultROITree.
-		ROITree roiTree = null;
+		ROITree roiTree = new DefaultROITree();
 		// 2. Add rois to the newly created ROITree.
-
+		roiTree.addROIs(rois);
 		// 3. Convert the ROITree to Overlay using the ConvertService
-		Overlay overlay = null;
+		Overlay overlay = convertService.convert(roiTree, Overlay.class);
 		// 4. Convert and the image to ImagePlus
-		ImagePlus imagePlus = null;
+		ImagePlus imagePlus = ImageJFunctions.wrap((Img) image, "image");
 		// 5. Use setOverlay on the ImagePlus
-
+		imagePlus.setOverlay(overlay);
 		// 6. Use the uiService to show the ImagePlus
+		uiService.show(imagePlus);
 
 		// END OF THE EXERCISE
 	}
