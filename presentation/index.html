@@ -26,9 +26,15 @@
 	<body>
 		<div class="reveal">
 			<div class="slides" stype="width:1200px">
-				<section>
-					<h1>Regions of Interest</h1>
-					ROIs in ImageJ2
+				<section data-markdown>
+					<script type="text/template">
+						# Regions of Interest
+
+						ROIs in ImageJ2
+
+						Presentation and Exercises: <br>
+						https://github.com/maarzt/imagej-roi-course
+					</script>
 				</section>
 				<section data-markdown>
 					<script type="text/template">
@@ -42,6 +48,16 @@
 						* Particularly interesting by the user
 						* Operations like Filters
 						* Calculate values: mean, area or histograms
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## No Complete Solution
+
+						At least three partial solutions:
+						* Old: IJ1 ROIs
+						* ImgLib2: Masks, RealMasks
+						* ImgLib2: IterableRegions
 					</script>
 				</section>
 				<section style="text-align:left;">
@@ -98,7 +114,7 @@
 
 						<p>Pros:</p>
 						<ul>
-							<li>Easy Iteration</li>
+							<li>Easy iteration</li>
 							<li>Integrated in ImgLib2</li>
 							<li>LabelRegions are IterableRegions</li>
 							<li>Useful in algorithms</li>
@@ -125,18 +141,16 @@
 
 						* IJ1 ROIs: GUI Tools
 						* Mask, RealMask: Logical Operations
-						* Iteration: Algorithms
+						* IterationRegions: Algorithms
 
 
 						Conversion is required:
 						* IJ1 ROIs <=> RealMask, Mask <=> IterableRegions
 					</script>
 				</section>
-				<section data-markdown style="text-align:left;">
+				<section data-markdown>
 					<script type="text/template">
 						## Exercises
-
-						Solutions are in the git branches
 					</script>
 				</section>
 			</div>
