@@ -37,14 +37,15 @@ public class IterableRegionsExample {
 
 		// BEGIN OF THE EXERCISE
 		// 1. Use the method toIterableRegion to convert the mask into an IterableRegion.
-		IterableRegion< BoolType > iterableRegion = null;
+		IterableRegion< BoolType > iterableRegion = toIterableRegion(mask, image);
 		// 2. Use Regions.sample to get an Iterable that iterates over the pixels of the bridge image in the iterable region.
-		IterableInterval< ? extends RealType<?>> iterable = null;
+		IterableInterval< ? extends RealType<?>> iterable = Regions.sample(iterableRegion, image);
 		// 3. Iterate over the iterable and set all pixel to zero.
 		//    Hint: There are two options to solve this: 1. Use a for loop. 2. Use iterable.forEach and lambdas.
-
+		for( RealType<?> pixel : iterable )
+			pixel.setZero();
 		// 4. Show the image with BdvFunctions.show . Don't forget to use BdvOptions.options().is2D() .
-
+		BdvFunctions.show(image, "image", BdvOptions.options().is2D());
 		// END OF THE EXERCISE
 	}
 
