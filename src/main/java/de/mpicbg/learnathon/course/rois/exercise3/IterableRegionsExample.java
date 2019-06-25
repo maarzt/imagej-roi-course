@@ -48,7 +48,7 @@ public class IterableRegionsExample {
 		// END OF THE EXERCISE
 	}
 
-	private IterableRegion< BoolType > toIterableRegion( RealMask mask, Interval image )
+	private static IterableRegion< BoolType > toIterableRegion( RealMask mask, Interval image )
 	{
 		// Convert ROI from R^n to Z^n.
 		final RandomAccessible<BoolType > discreteROI = Views.raster( Masks.toRealRandomAccessible(mask) );
