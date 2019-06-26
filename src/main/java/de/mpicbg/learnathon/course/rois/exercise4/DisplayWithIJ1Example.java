@@ -49,7 +49,7 @@ public class DisplayWithIJ1Example
 
 		// 3. Convert the ROITree to Overlay using the ConvertService
 		Overlay overlay = null;
-		// 4. Convert and the image to ImagePlus
+		// 4. Convert and the image to ImagePlus using ImageJFunctions
 		ImagePlus imagePlus = null;
 		// 5. Use setOverlay on the ImagePlus
 

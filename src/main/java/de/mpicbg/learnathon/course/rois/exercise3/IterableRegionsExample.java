@@ -33,7 +33,7 @@ public class IterableRegionsExample {
 		Img<? extends RealType<?> > image = ExerciseUtils.openBridgeImage();
 
 		// Create a sphere shaped ROI
-		RealMask mask = GeomMasks.closedSphere(new double[] { 200, 200 }, 100);
+		RealMaskRealInterval mask = GeomMasks.closedSphere(new double[] { 200, 200 }, 100);
 
 		// BEGIN OF THE EXERCISE
 		// 1. Use the method toIterableRegion to convert the mask into an IterableRegion.
